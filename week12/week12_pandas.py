@@ -8,8 +8,14 @@ wh = pd.read_csv('wh.csv')
 # print(new_wh.info())
 # print(new_wh.describe())
 
-criteria = wh['Weight'].quantile(0.9999) # 99.99% 이상인 데이터 지정
-print(criteria) # 약 255.9 파운드
-print(round(criteria, 1)) # 255.9
+criteria = wh['Weight'].quantile(0.75) # 99.99% 이상인 데이터 지정
+# print(criteria) # 약 255.9 파운드
+# print(round(criteria, 1)) # 255.9
 new_wh = wh[wh['Weight'] < criteria]
-print(new_wh.info())
+# print(new_wh.info())
+# print(new_wh.describe())
+sns.scatterplot(x='Weight', y='Height', data=new_wh)
+plt.show()
+
+# print(wh[wh['Weight'] > criteria])
+# print(wh[wh['Weight'] > criteria].index)
